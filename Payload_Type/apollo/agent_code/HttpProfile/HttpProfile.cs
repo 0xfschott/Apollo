@@ -154,6 +154,9 @@ namespace HttpTransport
                     UseDefaultCredentials = false,
                     BypassProxyOnLocal = false
                 };
+            } else {
+                webClient.Proxy = WebRequest.GetSystemWebProxy();
+                webClient.Proxy.Credentials = CredentialCache.DefaultCredentials;
             }
             
             foreach(string k in _additionalHeaders.Keys)
